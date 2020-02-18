@@ -12,4 +12,9 @@ exports.sendTaskDetails = async (req, res) => {
       return res.json({ success: false, data: "", message: "Parameter Missing" });
     }
   };
-  
+  exports.getTaskDetail=async(req,res)=>{
+    
+      let getTaskDetail= await Detail.find();
+      return res.json({ success: true, data: getTaskDetail, message: "found" });
+    
+  }
