@@ -33,3 +33,14 @@ exports.sendTaskDetails = async (req, res) => {
     return res.json({success:false,message:"error.."})
   }
   }
+  exports.deleteTask=async(req,res)=>{
+    if(req.body._id){
+      try{
+        let deleteTask= await Detail.findOneAndDelete({_id:req.body._id});
+        return res.json({success:true,data:deleteTask})
+      }
+      catch(err){
+        return res.json({success:false,data:"",message:"error"})
+      }
+    }
+  }
