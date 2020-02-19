@@ -18,3 +18,18 @@ exports.sendTaskDetails = async (req, res) => {
       return res.json({ success: true, data: getTaskDetail, message: "found" });
     
   }
+  exports.updateTaskDetail=async(req,res)=>{
+    if(req.body.category && req.body._id){
+      try{
+      let updateTaskDetail= await Detail.findOneAndUpdate({_id:req.body._id},{$set:{category:req.body.category}},{new:true});
+      await updateTaskDetail.save();
+      return res.json(updateTaskDetail);
+    }
+    catch(err){
+      return res.json({success:false,data:"",message:"error"})
+    }
+  }
+  else{
+    return res.json({success:false,message:"error.."})
+  }
+  }
