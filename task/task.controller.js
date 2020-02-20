@@ -1,4 +1,6 @@
 const Detail = require("./task.model");
+
+// api for Sending task detail
 exports.sendTaskDetails = async (req, res) => {
     if (req.body) {
       try {
@@ -12,6 +14,8 @@ exports.sendTaskDetails = async (req, res) => {
       return res.json({ success: false, data: "", message: "Parameter Missing" });
     }
   };
+
+  // api for get task detail
   exports.getTaskDetail=async(req,res)=>{
     
       let getTaskDetail= await Detail.find();
@@ -33,6 +37,7 @@ exports.sendTaskDetails = async (req, res) => {
     return res.json({success:false,message:"error.."})
   }
   }
+   // api for delete task 
   exports.deleteTask=async(req,res)=>{
     if(req.body._id){
       try{
