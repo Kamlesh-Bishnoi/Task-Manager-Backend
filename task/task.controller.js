@@ -40,12 +40,13 @@ exports.sendTaskDetails = async (req, res) => {
    // api for delete task 
   exports.deleteTask=async(req,res)=>{
     if(req.body._id){
+     
       try{
         let deleteTask= await Detail.findOneAndDelete({_id:req.body._id});
         return res.json({success:true,data:deleteTask})
       }
       catch(err){
-        return res.json({success:false,data:"",message:"error"})
+        return res.json({success:false,data:"",message:err})
       }
     }
   }
