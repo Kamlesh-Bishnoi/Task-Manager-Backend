@@ -1,3 +1,4 @@
+
 const Detail = require("./task.model");
 
 // api for Sending task detail
@@ -48,5 +49,8 @@ exports.sendTaskDetails = async (req, res) => {
       catch(err){
         return res.json({success:false,data:"",message:err})
       }
+    }
+    else{
+      return res.json({success:false,data:"", message:"parameter missing"})
     }
   }
